@@ -1,29 +1,19 @@
-// // Creating a React Element
-// const heading = React.createElement("h1", {/* Attributes Tag */ }, "I'm h1 from React Script inside App.js File");
-// const headingTwo = React.createElement("h2", { id: "headingTwo", class: "headerClass" }, "I'm h2 from React Script inside App.js File");
+import React from "react"
+import ReactDOM from "react-dom/client"
 
-// // Accessing Root and injecting the element into the root. 
-// const root = ReactDOM.createRoot(document.querySelector("#root"));
-// root.render(headingTwo);  
+// Create a COMPONENT COMPOSITION type scenario
 
-/** QUESTION : 
- * 
- * consider we wanted the html strucutre like this 
- * <div>
- *  <div>
- *      <h2> H2 element bla bla bla </h2>
- *   </div>
- * </div>
- */
+const Title = () => <h1>TITLE COMPONENT</h1>
 
-const element = React.createElement("div", {
-    className: "divOne"
-},
-    React.createElement("div", { className: "divTwo" },
-        React.createElement("h2", { className: "headerInsideDiv" }, "I'm the element inside the two div's")
-        //If we want to pass two elements like p or h3 after the above h2 we need to pass them inside an array 
-    )
-);
+const BodyComponent = () => {
+    return <>
+        <Title />
+        <h3>Inside the body </h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Fuga, odio! Adipisci, corporis? Magni voluptates nam praesentium laboriosam.
+            Maiores soluta amet, dolor a adipisci architecto tenetur rem ex inventore, harum quasi.</p>
+    </>
+}
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(element);
+const root = ReactDOM.createRoot(document.querySelector("#root"));
+root.render(<BodyComponent />)
